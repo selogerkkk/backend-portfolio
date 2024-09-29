@@ -29,9 +29,29 @@ export default function Portfolio() {
   const sections = ['home', 'about', 'experience', 'projects', 'contact'];
 
   const experience = [
-    { year: '2021 - Present', title: 'Senior Backend Developer', company: 'Tech Innovators Inc.' },
-    { year: '2018 - 2021', title: 'Backend Developer', company: 'DataDriven Solutions' },
-    { year: '2016 - 2018', title: 'Junior Developer', company: 'StartUp Ventures' },
+    {
+      year: 'Jan 2024 - Present', title: 'Backend Junior Developer', company: 'Kennedy Viagens Corporativas', location: 'Imperatriz, Maranhão, Brasil', role: 'Junior',
+      description: 'Kennedy Viagens Corporativas is a company that provides travel and tourism services to corporate clients. My role is to develop and maintain the company\'s backend systems, ensuring high performance and scalability.',
+      skills: ['Development and maintenance of backend systems',
+        'High performance and scalability',
+      ]
+    },
+    {
+      year: 'Jan 2023 - Present', title: 'Student volunteer', company: 'TechJr', location: 'Hybrid', role: 'Internship',
+      description: 'TechJr is an initiative of the Computer Science department at IFMA, which aims to provide students with their first real work experience while also serving the local community and companies.'
+    },
+    {
+      year: 'Jan 2022 - Jan 2024', title: 'IT Technician', company: 'IBL NET', location: 'Imperatriz, Maranhão, Brasil', role: 'Apprentice', skills: [
+        'Website and Tool Development - Laravel',
+        'Creation of Internal Tools - Laravel / Python',
+        'Assistance in Campaign Website Creation and Debugging - Javascript / React',
+        'Development of API-consuming Website - Javascript',
+        'Automation Creation - Python',
+        'Flowcharting for Development Processes',
+        'Hardware and Software Maintenance',
+        'Internal Helpdesk Support'
+      ]
+    },
   ]
 
   const projects = [
@@ -60,7 +80,6 @@ export default function Portfolio() {
       desc: 'Implemented a distributed caching system using Redis to improve application performance.',
       tech: ['Redis', 'Node.js', 'Docker', 'Nginx'],
       link: 'https://github.com/selogerkkk/'
-
     },
   ]
 
@@ -143,6 +162,8 @@ export default function Portfolio() {
                     <div className="absolute w-4 h-4 rounded-full bg-blue-600 -left-[41px] top-1" />
                     <h3 className="text-xl font-semibold">{job.title}</h3>
                     <p className="text-gray-600 dark:text-gray-400 mb-1">{job.company}</p>
+                    <p className="text-gray-600 dark:text-gray-400 mb-1">{job.role}</p>
+                    <p className="text-gray-600 dark:text-gray-400 mb-1">{job.skills?.map((skill) => <li>{skill}</li>)}</p>
                     <p className="text-gray-500 dark:text-gray-500">{job.year}</p>
                   </motion.div>
                 ))}
