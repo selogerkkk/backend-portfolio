@@ -84,8 +84,8 @@ export default function Portfolio() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-8" style={{ minHeight: '100vh', backgroundColor: '#1a202c', color: '#f7fafc', padding: '2rem' }}>
-      <nav className="fixed top-0 left-0 h-screen w-16 flex flex-col items-center justify-center space-y-8 bg-gray-800" style={{ position: 'fixed', top: 0, left: 0, height: '100vh', width: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem', backgroundColor: '#2d3748' }}>
+    <div className="min-h-screen bg-gray-900 text-gray-100 overflow-hidden" style={{ minHeight: '100vh', backgroundColor: '#1a202c', color: '#f7fafc', padding: '2rem', overflow: 'hidden' }}>
+      <nav className="fixed top-0 left-0 h-screen w-16 flex flex-col items-center justify-center space-y-8 bg-gray-800" style={{ position: 'fixed', top: 0, left: 0, height: '100vh', width: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem', backgroundColor: '#2d3748', overflow: 'hidden' }}>
         {sections.map((section) => (
           <button
             key={section}
@@ -148,23 +148,32 @@ export default function Portfolio() {
           )}
 
           {activeSection === 'experience' && (
-            <div className="max-w-3xl w-full">
-              <h2 className="text-4xl font-bold mb-8">Work Experience</h2>
-              <div className="relative border-l-2 border-gray-300 dark:border-gray-700 pl-8 ml-4">
+            <div className="max-w-4xl w-full px-4">
+              <h2 className="text-4xl font-bold mb-12 text-center text-gray-900 dark:text-gray-100">Work Experience</h2>
+              <div className="relative">
                 {experience.map((job, index) => (
                   <motion.div
                     key={job.year}
-                    className="mb-8"
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    className="mb-12 flex"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <div className="absolute w-4 h-4 rounded-full bg-blue-600 -left-[41px] top-1" />
-                    <h3 className="text-xl font-semibold">{job.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">{job.company}</p>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">{job.role}</p>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">{job.skills?.map((skill) => <li>{skill}</li>)}</p>
-                    <p className="text-gray-500 dark:text-gray-500">{job.year}</p>
+                    <div className="w-1/4 pr-8 text-right">
+                      <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">{job.year}</p>
+                    </div>
+                    <div className="w-3/4 relative">
+                      <div className="absolute w-3 h-3 bg-blue-600 rounded-full -left-[6.5px] top-2 border-4 border-white dark:border-gray-900" />
+                      <div className="border-l-2 border-gray-300 dark:border-gray-700 pl-8 pb-8">
+                        <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">{job.title}</h3>
+                        <p className="text-xl text-gray-700 dark:text-gray-300 mb-2">{job.company} - <span className="font-semibold">{job.role}</span></p>
+                        <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 mb-4">
+                          {job.skills?.map((skill, skillIndex) => (
+                            <li key={skillIndex} className="mb-1">{skill}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </motion.div>
                 ))}
               </div>
